@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://drga3a0h3gnhn"]
+[gd_scene load_steps=3 format=3 uid="uid://dgdv4bnyxgdem"]
 
 [ext_resource type="Texture2D" uid="uid://dv2rfuduk1mhe" path="res://assets/images/ground/ground.png" id="1_ywuge"]
 
@@ -6,16 +6,31 @@
 size = Vector2(2304, 16)
 
 [node name="Ground" type="StaticBody2D"]
-position = Vector2(0, 632)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
+position = Vector2(0, 632)
 texture = ExtResource("1_ywuge")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 2304, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1152, 8)
+position = Vector2(1152, 640)
+shape = SubResource("RectangleShape2D_lr1lr")
+
+[node name="ceiling" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="ceiling"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -16)
+texture = ExtResource("1_ywuge")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2304, 16)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ceiling"]
+position = Vector2(1152, -8)
 shape = SubResource("RectangleShape2D_lr1lr")

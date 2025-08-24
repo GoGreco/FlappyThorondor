@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk7ba73rajys5"]
+
+[ext_resource type="Texture2D" uid="uid://blyuek2fbqjbh" path="res://assets/images/obstacles/pillar_5[.png" id="1_b3ado"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40q4f"]
+size = Vector2(10, 60)
+
+[node name="Pillar_1" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_b3ado")
+
+[node name="fine" type="CollisionShape2D" parent="."]
+position = Vector2(1, -90)
+shape = SubResource("RectangleShape2D_40q4f")
+
+[node name="dead1" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-20, -60, -20, 106, -35, 120, -35, 180, 35, 180, 35, 120, 20, 105, 20, -60)
+
+[node name="dead2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(30, -120, 35, -140, 36, -180, -35, -180, -35, -120, -25, -120)

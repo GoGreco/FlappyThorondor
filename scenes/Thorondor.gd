@@ -2,16 +2,20 @@ extends CharacterBody2D
 
 #definindo varáveis da movimentação
 
-const velocidade_do_pulo : int = 100
+const velocidade_do_pulo : int = -500            
 const gravidade : int = 4000
 
 func _physics_process(delta):
 	
+	 
 	velocity.y += delta*gravidade
 	
-	if Input.is_action_just_pressed('ui_accept'):
-			velocity.y += velocidade_do_pulo
+
+	$AnimatedSprite2D.play("flying")
 	
+	if Input.is_action_just_pressed('ui_accept'):
+			velocity.y = velocidade_do_pulo
+
 	move_and_slide()	
 	
 
