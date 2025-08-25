@@ -1,24 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://x3qefnfdijjx"]
+[gd_scene load_steps=3 format=3 uid="uid://bk7ba73rajys5"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dk0x"]
-load_path = "res://.godot/imported/pillar_1.png-3fb91919d4627cda4871f4d69d9cbe3d.ctex"
+[ext_resource type="Texture2D" uid="uid://blyuek2fbqjbh" path="res://assets/images/obstacles/pillar_5[.png" id="1_40q4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40q4f"]
-size = Vector2(10, 60)
+size = Vector2(10, 107)
 
 [node name="Pillar_1" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(5, 5)
-texture = SubResource("CompressedTexture2D_7dk0x")
+scale = Vector2(9, 9)
+texture = ExtResource("1_40q4f")
 
 [node name="fine" type="CollisionShape2D" parent="."]
-position = Vector2(0, -35)
+position = Vector2(-1, -161.5)
 shape = SubResource("RectangleShape2D_40q4f")
 
 [node name="dead1" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-11, -5, -20, 6, -20, 106, -35, 120, -35, 180, 35, 180, 35, 120, 20, 105, 20, 11, 5, -5)
+position = Vector2(0, 148)
+polygon = PackedVector2Array(-36, -256, -36, 41, -63, 68, -63, 176, 63, 176, 63, 68, 36, 41, 36, -256)
 
 [node name="dead2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(20, -65, 20, -105, 36, -121, 36, -180, -35, -180, -36, -120, -20, -105, -20, -70, -15, -65)
+position = Vector2(-29, -143)
+polygon = PackedVector2Array(66, -73, 91, -109, 93, -181, -35, -181, -34, -82, -24, -72)

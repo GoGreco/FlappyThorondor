@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0y485abyhhhx"]
+[gd_scene load_steps=14 format=3 uid="uid://d0y485abyhhhx"]
 
 [ext_resource type="Script" uid="uid://bqgnf7v0bpbf7" path="res://scenes/Thorondor.gd" id="1_fmalo"]
 [ext_resource type="Texture2D" uid="uid://cf2vysrsaptss" path="res://assets/images/character/eagle_sprite.png" id="1_gty6y"]
@@ -74,11 +74,11 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4ayc"]
+radius = 23.3452
+
 [node name="Thorondor" type="CharacterBody2D"]
 script = ExtResource("1_fmalo")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(13, -9, 29, 6, -4, 17, -24, 7, -20, -3, -13, -21, 1, -25)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -86,3 +86,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bbmod")
 animation = &"flying"
 frame_progress = 0.72337
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_b4ayc")

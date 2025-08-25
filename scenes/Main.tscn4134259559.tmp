@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjq4qvxqmg4rn"]
+
+[ext_resource type="PackedScene" uid="uid://dgdv4bnyxgdem" path="res://scenes/Ground.tscn" id="1_0bbpv"]
+[ext_resource type="Script" uid="uid://crbh8snsccgv6" path="res://scenes/main.gd" id="1_rarhs"]
+[ext_resource type="PackedScene" uid="uid://d0y485abyhhhx" path="res://scenes/Thorondor.tscn" id="1_rvslj"]
+[ext_resource type="PackedScene" uid="uid://b48k7pv0hy0dy" path="res://scenes/Backgorund.tscn" id="2_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://ust57vbvuw1d" path="res://scenes/Hud.tscn" id="2_vcsgt"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_rarhs")
+
+[node name="HUD" parent="." instance=ExtResource("2_vcsgt")]
+
+[node name="Ground" parent="." instance=ExtResource("1_0bbpv")]
+
+[node name="Thorondor" parent="." instance=ExtResource("1_rvslj")]
+position = Vector2(160, 324)
+
+[node name="Backgorund" parent="." instance=ExtResource("2_0bbpv")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

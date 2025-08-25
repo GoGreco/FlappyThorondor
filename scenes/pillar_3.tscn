@@ -3,21 +3,23 @@
 [ext_resource type="Texture2D" uid="uid://dr6snqty077d0" path="res://assets/images/obstacles/pillar_3.png" id="1_qng1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40q4f"]
-size = Vector2(10, 62)
+size = Vector2(10, 108)
 
 [node name="Pillar_1" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(9, 9)
 texture = ExtResource("1_qng1u")
 
 [node name="fine" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_40q4f")
 
 [node name="dead1" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-10, 35, -20, 35, -20, 106, -35, 120, -35, 180, 35, 180, 35, 120, 20, 105, 20, 34, -5, 40)
+position = Vector2(0, 147)
+polygon = PackedVector2Array(-27, -84, -36, -75, -36, 42, -63, 69, -63, 177, 63, 177, 63, 69, 36, 42, 36, -49, 27, -84)
 
 [node name="dead2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(20, -25, 20, -105, 36, -121, 36, -180, -35, -180, -36, -120, -20, -105, -20, -30, -15, -25)
+position = Vector2(1, -144)
+polygon = PackedVector2Array(26, 99, 35, 81, 35, -45, 62, -72, 62, -180, -64, -180, -64, -72, -37, -45, -37, 90, -28, 99)
