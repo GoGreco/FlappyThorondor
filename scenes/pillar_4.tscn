@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://daarrgomktcg0"]
+[gd_scene load_steps=2 format=3 uid="uid://daarrgomktcg0"]
 
 [ext_resource type="Texture2D" uid="uid://qkbmtke287pp" path="res://assets/images/obstacles/pillar_4.png" id="1_c22y5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_40q4f"]
-size = Vector2(10, 108)
 
 [node name="Pillar_1" type="Area2D"]
 
@@ -11,10 +8,6 @@ size = Vector2(10, 108)
 texture_filter = 1
 scale = Vector2(9, 9)
 texture = ExtResource("1_c22y5")
-
-[node name="fine" type="CollisionShape2D" parent="."]
-position = Vector2(0, 153)
-shape = SubResource("RectangleShape2D_40q4f")
 
 [node name="dead1" type="CollisionPolygon2D" parent="."]
 position = Vector2(3, 145)

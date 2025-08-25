@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://ust57vbvuw1d"]
+[gd_scene load_steps=5 format=3 uid="uid://c0tm1fyksgmu3"]
 
-[ext_resource type="FontFile" uid="uid://bdnbut868swlk" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="1_wfueu"]
+[ext_resource type="FontFile" uid="uid://bdnbut868swlk" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="1_ahhtf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfueu"]
-bg_color = Color(0.278431, 0.764706, 0.4, 1)
-draw_center = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahhtf"]
+bg_color = Color(0.215686, 0.866667, 0.309804, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1f40"]
-bg_color = Color(0.858824, 0.733333, 0.0823529, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
+bg_color = Color(0.894118, 0.8, 0.145098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwkyw"]
-bg_color = Color(0.215686, 0.470588, 0.254902, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+bg_color = Color(0.12549, 0.556863, 0.294118, 1)
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -18,28 +25,13 @@ bg_color = Color(0.215686, 0.470588, 0.254902, 1)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -0.5
-offset_right = 0.5
-offset_bottom = 23.0
+offset_left = -24.0
+offset_top = 96.0
+offset_right = 24.0
+offset_bottom = 119.0
 grow_horizontal = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_wfueu")
-
-[node name="start_game" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_wfueu")
-text = "APERTE ESPAÇO PARA JOGAR"
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 24
 
 [node name="high_score" type="Label" parent="."]
 anchors_preset = 8
@@ -48,30 +40,37 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -72.0
-offset_top = -52.0
+offset_top = -68.0
 offset_right = 72.0
-offset_bottom = -29.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_wfueu")
+theme_override_fonts/font = ExtResource("1_ahhtf")
 text = "RECORDE: "
 
-[node name="Button" type="Button" parent="."]
-texture_filter = 1
-anchors_preset = -1
+[node name="start_game" type="Label" parent="."]
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.673
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.673
-offset_left = -96.0
-offset_top = -12.104
-offset_right = 96.0
-offset_bottom = 11.896
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -12.0
+offset_right = 216.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_wfueu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wfueu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f1f40")
-theme_override_styles/normal = SubResource("StyleBoxFlat_rwkyw")
-text = "RESTART"
+theme_override_fonts/font = ExtResource("1_ahhtf")
+text = "PRESSIONE ESPAÇO PARA JOGAR"
+
+[node name="game_over" type="Button" parent="."]
+offset_left = 496.0
+offset_top = 368.0
+offset_right = 656.0
+offset_bottom = 392.0
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahhtf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oo0fn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ysmq")
+text = "RESTART
+"

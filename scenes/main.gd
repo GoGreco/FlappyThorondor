@@ -13,7 +13,7 @@ var pillar_4 = preload("res://scenes/pillar_4.tscn")
 @onready var score_label = $HUD/score
 @onready var start_label = $HUD/start_game
 @onready var high_score_label = $HUD/high_score
-@onready var restart_button = $HUD/Button
+@onready var restart_button = $HUD/game_over     
 
 #Definindo constantes do início do jogo
 const thorondor_start_position := Vector2i( 120,324)
@@ -36,6 +36,8 @@ var ground_scale : int
 var last_pillar
 var pillar_heights := [pillar_1, pillar_2, pillar_3, pillar_4]
 var created_pillars : Array
+var after_danger: bool = false
+
 
 #Variáveis dos pontos
 var score : int 
@@ -46,7 +48,7 @@ var high_score : int
 func _ready() -> void:
 	
 	
-	restart_button.pressed.connect(new_game) 
+	restart_button.pressed.connect(new_game)
 	
 	#define o tamanho da tela
 	screen_size = get_window().size
@@ -61,8 +63,7 @@ func new_game():
 	
 	start_label.text = "APERTE ESPAÇO PARA JOGA: "
 	get_tree().paused = false
-	game_running = false
-	
+	  
 	thorondor.position = thorondor_start_position
 	thorondor.velocity = Vector2i(0, 0)
 	camera.position = camera_start_position
@@ -71,6 +72,7 @@ func new_game():
 	restart_button.hide()
 	high_score_label.hide() 
 	
+	game_running = false
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,7 +80,7 @@ func _process(delta):
 	
 	#atribui um valor a velocidade
 	speed = start_speed
-	
+	show_score()
 	#checa se o jogo está rodando
 	if game_running:
 		#checa se a velocidade está maior do que o valor máximo atribuido a ela na sessão das variaveis 
@@ -90,12 +92,12 @@ func _process(delta):
 		thorondor.position.x += speed
 		camera.position.x += speed
 		#atualiza a posição do chão com base na posição da câmera
-	if camera.position.x - ground.position.x > screen_size.x * 1.5:
-		ground.position.x += screen_size.x
+		if camera.position.x - ground.position.x > screen_size.x * 1.5:
+			ground.position.x += screen_size.x
 	
 		create_pillar()
-	
-	
+		show_score()
+		 
 	else:
 		if Input.is_action_pressed("ui_accept"):
 			game_running = true
@@ -104,7 +106,7 @@ func _process(delta):
 
 func create_pillar():
 	#função irá criar pillares se o array de pilares criados está vazio, ou se o último pilar esá atrás da câmera
-	if created_pillars.is_empty() or last_pillar.position.x > camera.position.x+(camera.position.x/2):
+	if created_pillars.is_empty() or last_pillar.position.x < camera.position.x    :
 		#define uma altura de pilar com base nas alturas encontradas no array definido inicialmente
 		
 		var pillar_type = pillar_heights[randi()%pillar_heights.size()]
@@ -121,30 +123,35 @@ func create_pillar():
 		var pillar_y : int = screen_size.y -(ground_height*ground_scale)-((pillar_size*pillar_scale.y)/2)
 		
 		add_pillar(pillar, pillar_x, pillar_y)
+		if thorondor.position.x > pillar_x:
+			after_danger = true
+			passed_pillar()
 		
 	
 	
 func add_pillar(column, x, y):
 	column.position = Vector2i(x, y)
-	column.body_entered.connect(hit_foe)
-	column.body_entered.connect(hit_foe)
+	column.body_entered.connect(hit_pillar)
 	
 	add_child(column)
 	created_pillars.append(column)
 	
-func hit_foe(body):
+func hit_pillar(body):
 	if body.name == "Thorondor":
 		game_over()
 
 
+func passed_pillar():
+	score+=1
+	after_danger = false
+
 func show_score():
-	pass
-	
+	score_label.text = str(score)
+
 func high_score_setter():
 	if score > high_score:
 		high_score = score
 		high_score_label.text = "Recorde: "+ str(high_score)
-		
 		
 func game_over():
 	high_score_setter()
@@ -154,3 +161,4 @@ func game_over():
 	start_label.show()
 	high_score_label.show()
 	restart_button.show()
+	
